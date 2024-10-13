@@ -1,0 +1,15 @@
+{
+    "author": "Lorenzo Carbonell <a.k.a. atareao>", 
+    "copyright": "2024",
+    "name": "Weather Widget",
+    "description": "A widget for current weather",
+    "uuid": "weather-widget@atareao.es",
+    "shell-version": [
+        "46", "47"
+    ],
+    "url": "https://www.atareao.es",
+    "gettext-domain": "weather-widget@atareao.es",
+    "settings-schema": "org.gnome.shell.extensions.weather-widget",
+    "version": 1,
+    "owner": "Lorenzo Carbonell <a.k.a. atareao>"
+}

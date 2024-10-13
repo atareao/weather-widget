@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.weather-widget" path="/org/gnome/shell/extensions/weather-widget/">
+    <key name="position" type="(ii)">
+      <default>(0, 0)</default>
+      <summary>Location</summary>
+      <description>Location of the widget</description>
+    </key>
+    <key name="visible" type="b">
+      <default>true</default>
+      <summary>Show widget</summary>
+      <description>Show widget</description>
+    </key>
+    <key name="updatetime" type="i">
+      <default>900</default>
+      <summary>Update time</summary>
+      <description>Update time</description>
+    </key>
+    <key name="show-indicator" type="b">
+      <default>true</default>
+      <summary>Show indicator</summary>
+      <description>Show indicator</description>
+    </key>
+    <key name="latitude" type="s">
+      <default>"39.36667"</default>
+      <summary>Latitude</summary>
+      <description>Latitude</description>
+    </key>
+    <key name="longitude" type="s">
+      <default>"-0.41667"</default>
+      <summary>Longitude</summary>
+      <description>Longitude</description>
+    </key>
+    <key name="temperature-unit" type="s">
+        <default>"celsius"</default>
+        <summary>Temperature Unit</summary>
+        <description>Temperature Unit</description>
+    </key>
+    <key name="win-speed-unit" type="s">
+        <default>"kmh"</default>
+        <summary>Win Speed Unit</summary>
+        <description>Win Speed Unit</description>
+    </key>
+    <key name="precipitation-unit" type="s">
+        <default>"mm"</default>
+        <summary>Precipitation Unit</summary>
+        <description>Precipitation Unit</description>
+    </key>
+  </schema>
+</schemalist>
