@@ -254,7 +254,7 @@ export default class WeatherWidget extends St.BoxLayout {
         return this;
     }
 
-    _onDestroy(){
+    destroy(){
         this.destroy_all_children();
         this._onDragEnd();
         this._clearTimeout();
@@ -264,5 +264,6 @@ export default class WeatherWidget extends St.BoxLayout {
         this._settings_connections.forEach(connection => {
             this._settings.disconnect(connection);
         });
+        super.destroy();
     }
 }

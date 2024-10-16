@@ -5,6 +5,10 @@ import Gio from 'gi://Gio';
 import { ExtensionPreferences, gettext as _ } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 import About from './about.js';
 
+interface WindowSettingRegistry {
+    _settings: Gio.Settings
+}
+
 class WidgetRow extends GObject.Object {
     static [GObject.properties] = {
         'key': GObject.ParamSpec.string(
@@ -57,11 +61,9 @@ class WidgetRow extends GObject.Object {
 }
 
 export default class WeatherWidgetPreferences extends ExtensionPreferences {
-  _settings?: Gio.Settings;
-  _window?: Adw.PreferencesWindow;
 
-  fillPreferencesWindow(window: Adw.PreferencesWindow) {
-    this._settings = this.getSettings();
+  override async fillPreferencesWindow(window: Adw.PreferencesWindow & WindowSettingRegistry): Promise<void> {
+    window._settings = this.getSettings();
 
     const iconTheme = Gtk.IconTheme.get_for_display(window.get_display());
     const iconsDirectory = this.dir.get_child('icons').get_path();
@@ -73,7 +75,7 @@ export default class WeatherWidgetPreferences extends ExtensionPreferences {
     window.add(new About(this));
   }
 
-  buildPageGneral(window: Adw.PreferencesWindow) {
+  buildPageGneral(window: Adw.PreferencesWindow & WindowSettingRegistry) {
     const page = new Adw.PreferencesPage({
         title: _("General"),
         icon_name: "dialog-information-symbolic",
@@ -95,9 +97,7 @@ export default class WeatherWidgetPreferences extends ExtensionPreferences {
     });
     group.add(longitude);
 
-    if (this._settings) {
-        this._settings.bind('latitude', latitude, 'text', Gio.SettingsBindFlags.DEFAULT);
-        this._settings.bind('longitude', longitude, 'text', Gio.SettingsBindFlags.DEFAULT);
-    }
+    window._settings.bind('latitude', latitude, 'text', Gio.SettingsBindFlags.DEFAULT);
+    window._settings.bind('longitude', longitude, 'text', Gio.SettingsBindFlags.DEFAULT);
   }
 }
