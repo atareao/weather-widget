@@ -1,12 +1,28 @@
-on: [push]
+on:
+  branches:
+    - main
+
+permissions:
+  contents: read
+
 jobs:
-  linter-action:
+  linter:
+    name: Linter code
     runs-on: ubuntu-latest
-    name: Linter action
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Prepare
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+
+      - name: Install Dependencies
+        id: prepare
         run: npm ci # you can use any custom command, just be sure it includes npm install
+
       - name: Linter action
         id: linter
         uses: AntonKornus/TypeScript-Linter@1.0.0
