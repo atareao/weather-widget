@@ -27,7 +27,10 @@ jobs:
 
       - name: Install Dependencies
         id: prepare
-        run: pnpm install --frozen-lockfile
+        run: |
+          mkdir dist
+          pnpm install --frozen-lockfile
+          tsc || true
 
       - name: Run linters
         run: pnpm lint
