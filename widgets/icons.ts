@@ -185,7 +185,7 @@ export const NOT_AVAILABLE: icon = {
 
 export const get_icon = (code: number): icon => {
     for (let i = 0; i < CONDITIONS.length; i++){
-        if (CONDITIONS[i].code == code){
+        if (CONDITIONS[i].code === code){
             console.log(CONDITIONS[i]);
             return CONDITIONS[i];
         }
