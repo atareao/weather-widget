@@ -18,6 +18,8 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Setup Node.js
         id: setup-node
@@ -32,3 +34,9 @@ jobs:
         uses: AntonKornus/TypeScript-Linter@1.0.0
         with:
           folder: src # optional
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          prettier: true
