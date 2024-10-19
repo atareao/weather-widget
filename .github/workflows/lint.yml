@@ -29,12 +29,6 @@ jobs:
         id: prepare
         run: pnpm install --frozen-lockfile
 
-      - name: Linter action
-        id: linter
-        uses: AntonKornus/TypeScript-Linter@1.0.0
-        with:
-          folder: src # optional
-
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
