@@ -129,7 +129,7 @@ export default class WeatherWidget extends St.BoxLayout {
         const data = this._openMeteo.get_data();
         const isDay = data.current.is_day;
         const weatherCode = data.current.weather_code;
-        if (isDay == 1){
+        if (isDay === 1){
             this._weatherIcon = St.TextureCache.get_default().load_file_async(
                 Gio.File.new_for_path(`${this._path}../assets/${ICONS.get_icon(weatherCode).day}`), this._width, this._height, 1, 1);
         }else{
@@ -221,9 +221,10 @@ export default class WeatherWidget extends St.BoxLayout {
         DND.addDragMonitor(this._dragMonitor);
 
         let p = this.get_transformed_position();
-        this.startX = this.oldX = p[0];
-        this.startY = this.oldY = p[1];
-
+        this.startX = p[0];
+        this.oldX = p[0];
+        this.startY = p[1];
+        this.oldY = p[1];
         this.get_allocation_box();
         this.rowHeight = this.height;
         this.rowWidth = this.width;

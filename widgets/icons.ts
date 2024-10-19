@@ -5,26 +5,6 @@ export interface icon {
     "night": string;
 }
 
-export const NOT_AVAILABLE: icon = {
-    "key": "not available",
-    "code": -1,
-    "day": "na.svg",
-    "night": "na.svg"
-}
-
-export const get_icon = (code: number): icon => {
-    for (let i = 0; i < CONDITIONS.length; i++){
-        if (CONDITIONS[i].code == code){
-            console.log(CONDITIONS[i]);
-            return CONDITIONS[i];
-        }
-    }
-    console.log(NOT_AVAILABLE);
-    return NOT_AVAILABLE;
-}
-
-
-
 export const CONDITIONS: icon[] = [
     {
         "code": 0,
@@ -196,3 +176,20 @@ export const CONDITIONS: icon[] = [
     }
 ]
 
+export const NOT_AVAILABLE: icon = {
+    "key": "not available",
+    "code": -1,
+    "day": "na.svg",
+    "night": "na.svg"
+}
+
+export const get_icon = (code: number): icon => {
+    for (let i = 0; i < CONDITIONS.length; i++){
+        if (CONDITIONS[i].code == code){
+            console.log(CONDITIONS[i]);
+            return CONDITIONS[i];
+        }
+    }
+    console.log(NOT_AVAILABLE);
+    return NOT_AVAILABLE;
+}

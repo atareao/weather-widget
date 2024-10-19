@@ -101,7 +101,7 @@ export default class OpenMeteo {
                 Soup.form_encode_hash(this.params)
             );
             const bytes = session.send_and_read(message, Gio.Cancellable.new());
-            if(bytes != null){
+            if(bytes !== null){
                 const response = (new TextDecoder())
                     .decode(bytes.get_data()?.buffer);
                 console.log("Response: ", response);
@@ -113,7 +113,7 @@ export default class OpenMeteo {
     }
 
     get_data(): WeatherResponse{
-        if (this.data == null){
+        if (this.data === null){
             this.update();
         }
         return this.data;
